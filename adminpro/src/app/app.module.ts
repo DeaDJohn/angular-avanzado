@@ -1,9 +1,14 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 // Rutas
 import { APP_ROUTES } from './app.routes';
 
+
+// Modulos
+import { PagesModule } from './pages/pages.module';
+import { ShareModule } from './shared/share.module';
 
 
 
@@ -25,19 +30,21 @@ import { RegisterComponent } from './login/register.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    NopagefoundComponent,
-    DashbordComponent,
-    ProgressComponent,
-    Graficas1Component,
-    HeaderComponent,
-    SidebarComponent,
-    BreadcrumbsComponent,
-    PagesComponent,
     RegisterComponent
+    // NopagefoundComponent,
+    // DashbordComponent,
+    // ProgressComponent,
+    // Graficas1Component,
+    // PagesComponent,
+    // HeaderComponent,
+    // SidebarComponent,
+    // BreadcrumbsComponent,
   ],
   imports: [
     BrowserModule,
-    APP_ROUTES
+    APP_ROUTES,
+    PagesModule,
+    ShareModule
   ],
   providers: [],
   bootstrap: [AppComponent]
