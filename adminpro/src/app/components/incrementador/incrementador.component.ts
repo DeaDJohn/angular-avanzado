@@ -1,35 +1,54 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: "app-incrementador",
   templateUrl: "./incrementador.component.html"
 })
 export class IncrementadorComponent implements OnInit {
-  @Input('nombre') leyenda: string = "Leyenda";
-  @Input() progreso: number = 50;
-
-  @Output('actualizaValor') cambioValor: EventEmitter<number> = new EventEmitter();
-
-  constructor() {
-    console.log('Leyenda', this.leyenda);
-    console.log("Progreso", this.progreso);
-  }
+	@ViewChild("txtProgress") txtProgress: ElementRef;
+	@Input("nombre")
+	leyenda: string = "Leyenda";
+	@Input() progreso: number = 50;
+	
+	@Output("actualizaValor")
+	cambioValor: EventEmitter<number> = new EventEmitter();
+	
+	constructor() {
+		console.log("Leyenda", this.leyenda);
+		console.log("Progreso", this.progreso);
+	}
 
   ngOnInit() {
-    console.log('Leyenda', this.leyenda);
+    console.log("Leyenda", this.leyenda);
     console.log("Progreso", this.progreso);
   }
 
-  cambiarValor(valor) {
-    if (this.progreso >= 100 && valor > 0) {
+  onChanges(newValue: number) {
+    // let elemHTML: any = document.getElementsByName("progreso");
+
+	//   console.log(this.txtProgress);
+    if (newValue >= 100) {
       this.progreso = 100;
-      return;
-    } else if (this.progreso <= 0 && valor < 0) {
+    } else if (newValue <= 0) {
       this.progreso = 0;
-      return;
     } else {
-      this.progreso = this.progreso + valor;
-      this.cambioValor.emit(this.progreso);
+      this.progreso = newValue;
     }
+	// elemHTML.value = this.progreso;
+	this.txtProgress.nativeElement.value = this.progreso;
+    this.cambioValor.emit(this.progreso);
   }
+	cambiarValor(valor) {
+		if (this.progreso >= 100 && valor > 0) {
+			this.progreso = 100;
+			return;
+		} else if (this.progreso <= 0 && valor < 0) {
+			this.progreso = 0;
+			return;
+		} else {
+			this.progreso = this.progreso + valor;
+			this.cambioValor.emit(this.progreso);
+			this.txtProgress.nativeElement.focus();
+		}
+	}
 }

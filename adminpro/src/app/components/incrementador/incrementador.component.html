@@ -1,11 +1,12 @@
-<h3>{{leyenda}}</h3>
+<h3>{{leyenda}} - {{progreso}}</h3>
 <div class="input-group">
     <span class="input-group-btn">
 		<button class="btn btn-outline-primary" type="button" (click)="cambiarValor(-5)">
 			<i class="mdi mdi-minus"></i>
 		</button>
 	</span>
-    <input type="text" class="form-control" [ngModel]="progreso">
+    <!-- El hash es para hacer una referencia al @ViewChild del componente -->
+    <input #txtProgress type="number" class="form-control" [(ngModel)]="progreso" (ngModelChange)="onChanges($event)" min="1" max="100">
     <span class="input-group-btn">
 		<button class="btn btn-outline-primary" type="button" (click)="cambiarValor(+5)">
 			<i class="mdi mdi-plus"></i>
