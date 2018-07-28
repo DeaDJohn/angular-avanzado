@@ -13,7 +13,7 @@ const pageRoutes: Routes = [
     component: PagesComponent,
     children: [
       { path: "dashboard", component: DashbordComponent },
-      { path: "progess", component: ProgressComponent },
+      { path: "progress", component: ProgressComponent },
       { path: "graficas1", component: Graficas1Component },
       { path: "", redirectTo: "/dashboard", pathMatch: "full" }
     ]
