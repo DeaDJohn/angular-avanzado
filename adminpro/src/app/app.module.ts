@@ -17,7 +17,7 @@ import { FormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from "./login/register.component";
-
+import { ChartsModule } from "ng2-charts";
 
 
 @NgModule({
@@ -25,15 +25,9 @@ import { RegisterComponent } from "./login/register.component";
     AppComponent,
     LoginComponent,
     RegisterComponent
-  
   ],
-  imports: [
-    BrowserModule,
-    APP_ROUTES,
-    PagesModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, APP_ROUTES, PagesModule, FormsModule, ChartsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
