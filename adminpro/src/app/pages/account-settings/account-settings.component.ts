@@ -12,7 +12,7 @@ export class AccountSettingsComponent implements OnInit {
   constructor( public _ajustes: SettingsService
 	) { }
 
-  ngOnInit() { }
+  ngOnInit() { this.colocarCheck(); }
 
 
   cambiarColor( tema: string, link: any ){
@@ -23,13 +23,31 @@ export class AccountSettingsComponent implements OnInit {
   }
 
   aplicarCheck( link: any){
-	  let selectores : any = document.getElementsByClassName('selector');
+	// seleccionar los elementos
+	let selectores : any = document.getElementsByClassName('selector');
 
-	  for( let ref of selectores ){
-		  ref.classList.remove('working');
-	  }
-
-	  link.classList.add('working')
+	for( let ref of selectores ){
+		// se eliminan de todos los elementos la clase working
+		ref.classList.remove('working');
+	}
+	// se añade la clase working al elemento que tenga el nombre del link
+	link.classList.add('working')
 
   }
+
+	colocarCheck() {
+		// seleccionar los elementos
+		let selectores: any = document.getElementsByClassName("selector");
+		// obtenemos el nombre del tema
+		let tema = this._ajustes.ajustes.tema;
+		for (let ref of selectores) {
+			// el elemento que tenga el nombre del tema en el data-theme
+			if (ref.getAttribute("data-theme") === tema) {
+				// se añade la clase working
+				ref.classList.add("working");
+				// se rompe el bucle
+				break;
+			}
+		}
+	}
 }
