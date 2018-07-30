@@ -20,13 +20,20 @@ import { RegisterComponent } from "./login/register.component";
 import { ChartsModule } from "ng2-charts";
 
 //Servicios
-import { SettingsService } from "./services/settings.service";
+import { ServiceModule } from './services/service.module';
 
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, RegisterComponent],
-  imports: [BrowserModule, APP_ROUTES, PagesModule, FormsModule, ChartsModule],
-  providers: [SettingsService],
+  imports: [
+    BrowserModule,
+    APP_ROUTES,
+    PagesModule,
+    FormsModule,
+    ChartsModule,
+    ServiceModule
+  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
