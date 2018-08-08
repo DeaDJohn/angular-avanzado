@@ -1,7 +1,7 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
 // Rutas
 import { APP_ROUTES } from './app.routes';
 
@@ -31,7 +31,8 @@ import { ServiceModule } from './services/service.module';
     PagesModule,
     FormsModule,
     ChartsModule,
-    ServiceModule
+    ServiceModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,12 +15,36 @@ const pageRoutes: Routes = [
     path: '',
     component: PagesComponent,
     children: [
-      { path: 'dashboard', component: DashbordComponent, data: { titulo: 'Dashboard' } },
-      { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' } },
-      { path: 'graficas1', component: Graficas1Component, data: { titulo: 'Gráficas' } },
-      { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },
-      { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJS' } },
-      { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del Tema' } },
+      { path: 'dashboard', component: DashbordComponent, data: {
+          titulo: 'Dashboard',
+          description: 'Página creada por JJ Fernandez con Angular 6',
+          custom: 'Texto custom para analitica'
+      } },
+      { path: 'progress', component: ProgressComponent, data: {
+          titulo: 'Progress',
+          description: 'Página creada por JJ Fernandez con Angular 6',
+          custom: 'Texto custom para analitica'
+      } },
+      { path: 'graficas1', component: Graficas1Component, data: {
+          titulo: 'Gráficas',
+          description: 'Página creada por JJ Fernandez con Angular 6',
+          custom: 'Texto custom para analitica'
+      } },
+      { path: 'promesas', component: PromesasComponent, data: {
+          titulo: 'Promesas',
+          description: 'Página creada por JJ Fernandez con Angular 6',
+          custom: 'Texto custom para analitica'
+      } },
+      { path: 'rxjs', component: RxjsComponent, data: {
+          titulo: 'RxJS',
+          description: 'Página creada por JJ Fernandez con Angular 6',
+          custom: 'Texto custom para analitica'
+      } },
+      { path: 'account-settings', component: AccountSettingsComponent, data: {
+          titulo: 'Ajustes del Tema',
+          description: 'Página creada por JJ Fernandez con Angular 6',
+          custom: 'Texto custom para analitica'
+      } },
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
     ],
   },

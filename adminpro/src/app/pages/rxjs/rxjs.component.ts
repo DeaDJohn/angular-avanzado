@@ -10,7 +10,9 @@ export class RxjsComponent implements OnInit, OnDestroy {
 
     // creamos una propiedad de tipo Subscription
     subscription: Subscription;
-
+    numero: string;
+    error: string;
+    texto: string;
     constructor() {
 
         // Guardamos el observable en la propiedad.
@@ -22,11 +24,11 @@ export class RxjsComponent implements OnInit, OnDestroy {
         // )
         .subscribe(
             // se acciona en cada intervalo
-            numero => console.log( 'Subs', numero),
+            numero => this.numero = 'Número: ' + numero,
             // se acciona cuando se llama en el observable error()
-            error => console.error('Error en el obs', error),
+            error => this.error = error,
             // Cuando se llama al metodo del observable complete().
-            () => console.log('El observador se terminó')
+            () => this.texto = 'El observador se terminó'
         );
 
     }
