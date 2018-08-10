@@ -21,7 +21,7 @@ mongoose.connection.openUri('mongodb://localhost:27017/hospitalDB', (err, res) =
 // Rutas
 app.get('/', (req, res, next) => {
 
-    res.status(403).json({
+    res.status(200).json({
         ok: true,
         mensaje: 'Petición realizada correctamente'
     });
