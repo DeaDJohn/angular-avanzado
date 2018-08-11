@@ -1,18 +1,24 @@
 var mongoose = require('mongoose');
+var uniqueValidator = require('mongoose-unique-validator');
 
 
 var Schema = mongoose.Schema;
 
-// Crear un modelo para crear usuarios en la base de datos.
+var rolesValidos = {
+    values: ['ADMIN_ROLE', 'USER_ROLE'],
+    message: '{VALUE} no es un role permitido'
+}
+
 var usuarioSchema = new Schema({
 
-    nombre: { type: String, require: [true, 'El nombre es necesario'] },
-    email: { type: String, unique: true, require: [true, 'El email es necesario'] },
-    password: { type: String, require: [true, 'El constraseña es necesario'] },
-    img: { type: String, require: false },
-    role: { type: String, require: false, default: 'USER_ROLE' },
+    nombre: { type: String, required: [true, 'El nombre es necesario'] },
+    email: { type: String, unique: true, required: [true, 'El email es necesario'] },
+    password: { type: String, required: [true, 'El constraseña es necesario'] },
+    img: { type: String, required: false },
+    role: { type: String, required: false, default: 'USER_ROLE', enum: rolesValidos },
 
 });
 
+usuarioSchema.plugin(uniqueValidator, { message: 'El correo debe ser unico' });
 
 module.exports = mongoose.model('Usuario', usuarioSchema);

@@ -45,7 +45,7 @@ app.post('/', (req, res) => {
     usuario.save((err, usuarioGuardado) => {
 
         if (err) {
-            return res.status(500).json({
+            return res.status(400).json({
                 ok: true,
                 mensaje: 'Error guarado usuario',
                 errors: err
