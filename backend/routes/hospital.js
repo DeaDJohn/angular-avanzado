@@ -14,7 +14,8 @@ var Hospital = require('../models/hospital');
 //============================
 app.get('/', (req, res, next) => {
 
-    Hospital.find({}, 'nombre usuario')
+    Hospital.find({})
+        .populate('usuario', 'nombre email')
         .exec(
             (err, hospitales) => {
                 if (err) {
