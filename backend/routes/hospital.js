@@ -16,7 +16,7 @@ var Hospital = require('../models/hospital');
 //
 app.get('/', (req, res, next) => {
 
-    Hospital.find({}, 'nombre email img role')
+    Hospital.find({}, 'nombre usuario')
         .exec(
             (err, hospitales) => {
                 if (err) {
@@ -75,11 +75,6 @@ app.put('/:id', mdAutentificacion.verificaToken, (req, res) => {
                 });
             }
 
-            // la password no se guarda en la base de datos
-            // en este punto porque esta en la función de callback
-            // del save. Tan solo muestra la carita para que no se vea.
-            hospitalGuardado.password = ':)';
-
             res.status(200).json({
                 ok: true,
                 hospital: hospitalGuardado,
@@ -100,7 +95,7 @@ app.post('/', mdAutentificacion.verificaToken, (req, res) => {
     var hospital = new Hospital({
         nombre: body.nombre,
         img: body.img,
-        usuario: req.usuario
+        hospital: req.hospital
     });
 
     hospital.save((err, hospitalGuardado) => {
@@ -116,7 +111,6 @@ app.post('/', mdAutentificacion.verificaToken, (req, res) => {
         res.status(201).json({
             ok: true,
             hospital: hospitalGuardado,
-            hospitalToken: req.hospital
         });
 
     });
@@ -124,33 +118,33 @@ app.post('/', mdAutentificacion.verificaToken, (req, res) => {
 });
 
 //
-// Eliminar un usuario por el id
+// Eliminar un hospital por el id
 //
 
 app.delete('/:id', mdAutentificacion.verificaToken, (req, res) => {
 
     var id = req.params.id;
 
-    Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {
+    Hospital.findByIdAndRemove(id, (err, hospitalBorrado) => {
         if (err) {
             return res.status(500).json({
                 ok: false,
-                mensaje: 'Error al borrar usuario',
+                mensaje: 'Error al borrar hospital',
                 errors: err
             });
         }
 
-        if (!usuarioBorrado) {
+        if (!hospitalBorrado) {
             return res.status(400).json({
                 ok: false,
-                mensaje: 'El usuario con el id ' + id + ' no existe.',
-                errors: { message: 'No exite un usuario con ese ID.' }
+                mensaje: 'El hospital con el id ' + id + ' no existe.',
+                errors: { message: 'No exite un hospital con ese ID.' }
             });
         }
 
         res.status(200).json({
             ok: true,
-            usuario: usuarioBorrado
+            hospital: hospitalBorrado
         });
     });
 });

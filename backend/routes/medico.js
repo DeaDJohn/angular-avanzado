@@ -16,13 +16,13 @@ var Medico = require('../models/medico');
 //
 app.get('/', (req, res, next) => {
 
-    Medico.find({}, 'nombre email img role')
+    Medico.find({}, 'nombre hospital usuario')
         .exec(
             (err, medicos) => {
                 if (err) {
                     return res.status(500).json({
                         ok: false,
-                        mensaje: 'Error cargando medicos',
+                        mensaje: 'Error cargando médicos',
                         errors: err
                     });
                 }
@@ -76,11 +76,6 @@ app.put('/:id', mdAutentificacion.verificaToken, (req, res) => {
                 });
             }
 
-            // la password no se guarda en la base de datos
-            // en este punto porque esta en la función de callback
-            // del save. Tan solo muestra la carita para que no se vea.
-            medicoGuardado.password = ':)';
-
             res.status(200).json({
                 ok: true,
                 medico: medicoGuardado,
@@ -91,9 +86,10 @@ app.put('/:id', mdAutentificacion.verificaToken, (req, res) => {
     });
 });
 
-//
+//============================
 // Crear un nuevo medico
-//
+//============================
+
 app.post('/', mdAutentificacion.verificaToken, (req, res) => {
 
     var body = req.body;
@@ -121,8 +117,6 @@ app.post('/', mdAutentificacion.verificaToken, (req, res) => {
 
 
     });
-
-
 
 });
 
