@@ -1,7 +1,11 @@
 var express = require('express');
 var bcrypt = require('bcrypt');
+var jwt = require('jsonwebtoken');
+
+var SEED = require('../config/config').SEED;
 
 var app = express();
+
 
 var Usuario = require('../models/usuario');
 
@@ -28,6 +32,29 @@ app.get('/', (req, res, next) => {
             }
         );
 });
+
+//
+// Verificar Token.
+//
+app.use('/', (req, res, next) => {
+
+
+    var token = req.query.token;
+
+    jwt.verify(token, SEED, (err, decoded) => {
+
+        if (err) {
+            return res.status(401).json({
+                ok: false,
+                mensaje: 'Token incorrecto',
+                errors: err
+            });
+        }
+        // sin el next no sabe la funcion que debe continuar.
+        next();
+    });
+});
+
 
 
 //
