@@ -15,7 +15,7 @@ app.get('/', (req, res, next) => {
             (err, usuarios) => {
                 if (err) {
                     return res.status(500).json({
-                        ok: true,
+                        ok: false,
                         mensaje: 'Error cargando usuarios',
                         errors: err
                     });
@@ -64,7 +64,7 @@ app.put('/:id', (req, res) => {
 
             if (err) {
                 return res.status(400).json({
-                    ok: true,
+                    ok: false,
                     mensaje: 'Error al actualizar el usuario.',
                     errors: err
                 });
@@ -103,7 +103,7 @@ app.post('/', (req, res) => {
 
         if (err) {
             return res.status(400).json({
-                ok: true,
+                ok: false,
                 mensaje: 'Error guarado usuario',
                 errors: err
             });
@@ -119,6 +119,39 @@ app.post('/', (req, res) => {
 
 
 
-})
+});
+
+//
+// Eliminar un usuario por el id
+//
+
+app.delete('/:id', (req, res) => {
+
+    var id = req.params.id;
+
+    Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {
+        if (err) {
+            return res.status(500).json({
+                ok: false,
+                mensaje: 'Error al borrar usuario',
+                errors: err
+            });
+        }
+
+        if (!usuarioBorrado) {
+            return res.status(400).json({
+                ok: false,
+                mensaje: 'El usuario con el id ' + id + ' no existe.',
+                errors: { message: 'No exite un usuario con ese ID.' }
+            });
+        }
+
+        res.status(200).json({
+            ok: true,
+            usuario: usuarioBorrado
+        });
+    });
+});
+
 
 module.exports = app;
