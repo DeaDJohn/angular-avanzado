@@ -1,6 +1,4 @@
 var express = require('express');
-var bcrypt = require('bcrypt');
-var jwt = require('jsonwebtoken');
 
 var mdAutentificacion = require('../middlewares/autentificacion');
 
@@ -11,9 +9,9 @@ var app = express();
 
 var Hospital = require('../models/hospital');
 
-//
-// Obtener todos los usarios
-//
+//============================
+// Obtener todos los hospitales
+//============================
 app.get('/', (req, res, next) => {
 
     Hospital.find({}, 'nombre usuario')
@@ -36,10 +34,9 @@ app.get('/', (req, res, next) => {
 });
 
 
-
-//
+//============================
 // Actualizar un  hospital
-//
+//============================
 
 app.put('/:id', mdAutentificacion.verificaToken, (req, res) => {
 
@@ -64,6 +61,7 @@ app.put('/:id', mdAutentificacion.verificaToken, (req, res) => {
         }
 
         hospital.nombre = body.nombre;
+        hospital.usuario = req.usuario._id;
 
         hospital.save((err, hospitalGuardado) => {
 
@@ -85,9 +83,10 @@ app.put('/:id', mdAutentificacion.verificaToken, (req, res) => {
     });
 });
 
-//
+//============================
 // Crear un nuevo hospital
-//
+//============================
+
 app.post('/', mdAutentificacion.verificaToken, (req, res) => {
 
     var body = req.body;
@@ -95,7 +94,7 @@ app.post('/', mdAutentificacion.verificaToken, (req, res) => {
     var hospital = new Hospital({
         nombre: body.nombre,
         img: body.img,
-        hospital: req.hospital
+        usuario: req.usuario._id
     });
 
     hospital.save((err, hospitalGuardado) => {
@@ -103,7 +102,7 @@ app.post('/', mdAutentificacion.verificaToken, (req, res) => {
         if (err) {
             return res.status(400).json({
                 ok: false,
-                mensaje: 'Error guarado hospital',
+                mensaje: 'Error al crear hospital',
                 errors: err
             });
         }

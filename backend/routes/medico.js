@@ -1,6 +1,4 @@
 var express = require('express');
-var bcrypt = require('bcrypt');
-var jwt = require('jsonwebtoken');
 
 var mdAutentificacion = require('../middlewares/autentificacion');
 
@@ -37,9 +35,9 @@ app.get('/', (req, res, next) => {
 
 
 
-//
+//============================
 // Actualizar un  medico
-//
+//============================
 
 app.put('/:id', mdAutentificacion.verificaToken, (req, res) => {
 
@@ -64,6 +62,7 @@ app.put('/:id', mdAutentificacion.verificaToken, (req, res) => {
         }
 
         medico.nombre = body.nombre;
+        medico.usuario = req.usuario._id;
         medico.hospital = body.hospital;
 
         medico.save((err, medicoGuardado) => {
@@ -96,8 +95,8 @@ app.post('/', mdAutentificacion.verificaToken, (req, res) => {
     var medico = new Medico({
         nombre: body.nombre,
         img: body.img,
-        usuario: req.usuario,
-        hospital: hospital.id
+        usuario: req.usuario._id,
+        hospital: body.hospital
     });
 
     medico.save((err, medicoGuardado) => {
