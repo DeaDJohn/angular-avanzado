@@ -29,7 +29,7 @@ var imagenesRoutes = require('./routes/imagenes');
 
 
 // Conexión a la base de datos
-mongoose.connection.openUri('mongodb://localhost:27017/hospitalDB', (err, res) => {
+mongoose.connection.openUri('mongodb://localhost:27017/hospitalDB', { useNewUrlParser: true }, (err, res) => {
 
     if (err) throw err;
 
