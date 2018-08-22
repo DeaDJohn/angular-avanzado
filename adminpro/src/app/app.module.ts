@@ -10,16 +10,16 @@ import { APP_ROUTES } from './app.routes';
 import { PagesModule } from './pages/pages.module';
 
 // Temporal 
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 // Componentes
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from "./login/register.component";
-import { ChartsModule } from "ng2-charts";
+import { RegisterComponent } from './login/register.component';
+import { ChartsModule } from 'ng2-charts';
 
-//Servicios
+// Servicios
 import { ServiceModule } from './services/service.module';
 
 
@@ -30,6 +30,7 @@ import { ServiceModule } from './services/service.module';
     APP_ROUTES,
     PagesModule,
     FormsModule,
+    ReactiveFormsModule,
     ChartsModule,
     ServiceModule,
     CommonModule
