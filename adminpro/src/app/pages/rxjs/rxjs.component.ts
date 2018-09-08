@@ -67,11 +67,12 @@ export class RxjsComponent implements OnInit, OnDestroy {
         }, 1000);
     })
     .pipe(
-        map( resp =>  resp.valor ),
+        map( (resp: any) => {
+            return resp.valor;
+        }),
         filter( ( valor , index ) => {
             // console.log( valor, index);
             if ( (valor % 2) ) {
-
                 // impar
                 return true;
             } else {
@@ -79,7 +80,6 @@ export class RxjsComponent implements OnInit, OnDestroy {
                 return false;
             }
         })
-
     );
   }
 

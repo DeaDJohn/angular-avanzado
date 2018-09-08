@@ -5,7 +5,7 @@ import { URL_SERVICIO } from '../../config/config';
 
 import 'rxjs/add/operator/map';
 
-@Injectable({})
+@Injectable()
 export class UsuarioService {
 
     usuario: Usuario;
