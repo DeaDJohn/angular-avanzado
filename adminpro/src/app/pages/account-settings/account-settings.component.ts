@@ -9,15 +9,13 @@ import { SettingsService } from '../../services/service.index';
 })
 export class AccountSettingsComponent implements OnInit {
 
-  constructor( public _ajustes: SettingsService
-	) { }
+  constructor( public _ajustes: SettingsService) { }
 
   ngOnInit() { this.colocarCheck(); }
 
 
   cambiarColor( tema: string, link: any ){
 	//   console.log(link);
-	
 	  this.aplicarCheck(link);
 	  this._ajustes.aplicarTema(tema);
   }

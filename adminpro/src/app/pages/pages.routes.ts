@@ -9,6 +9,7 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 
 import { LoginGuardGuard } from '../services/guards/login-guard.guard';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -48,6 +49,11 @@ const pageRoutes: Routes = [
           description: 'Página creada por JJ Fernandez con Angular 6',
           custom: 'Texto custom para analitica'
       } },
+      { path: 'profile', component: ProfileComponent, data: {
+        titulo: 'Perfil Usuario',
+        description: 'Página creada por JJ Fernandez con Angular 6',
+        custom: 'Texto custom para analitica'
+    } },
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
     ],
   },
