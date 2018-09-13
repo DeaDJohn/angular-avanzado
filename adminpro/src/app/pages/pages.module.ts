@@ -4,6 +4,7 @@ import { PagesComponent } from './pages.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
+import { CommonModule } from '@angular/common';
 
 // pipe module
 import { PipesModule } from '../pipes/pipes.module';
@@ -21,6 +22,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from './profile/profile.component';
+
 
 
 
@@ -43,6 +45,6 @@ import { ProfileComponent } from './profile/profile.component';
     Graficas1Component,
     PagesComponent
   ],
-  imports: [ShareModule, PAGES_ROUTES, FormsModule, ChartsModule, PipesModule]
+  imports: [CommonModule, ShareModule, PAGES_ROUTES, FormsModule, ChartsModule, PipesModule]
 })
 export class PagesModule {}

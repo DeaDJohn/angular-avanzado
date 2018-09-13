@@ -29,10 +29,12 @@
     </div>
     <div class="col-lg-5">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" align="center">
                 <h4 class="card-title">Imagen del Usuario</h4>
-                <h6 class="card-subtitle">made with bootstrap elements</h6>
-                <img src="" alt="">
+                <h6 class="card-subtitle"></h6>
+
+                <img *ngIf="!imagenTemp" [src]="usuario.img | imagen" class="w150">
+                <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150">
 
                 <input (change)="seleccionImagen( $event.target.files[0] )" type="file"/>
 
