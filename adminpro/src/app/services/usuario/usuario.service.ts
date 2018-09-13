@@ -13,14 +13,13 @@ export class UsuarioService {
 	usuario: Usuario;
 	token: string;
 
-  constructor(
+	constructor(
 	public http: HttpClient,
 	public router: Router,
 	public _subirArchivoService: SubirArchivoService
-  ) {
-	console.log('Servicio de usuario listo');
-	this.cargarStorage();
-  }
+	) {
+		this.cargarStorage();
+	}
 
 	logout() {
 		this.usuario = null;
@@ -43,7 +42,6 @@ export class UsuarioService {
 	}
 
 	estaLogueado() {
-		console.log(this.token);
 		return( this.token.length > 5) ? true : false;
 	}
 
@@ -67,7 +65,7 @@ export class UsuarioService {
 	}
 
 
-  login( usuario: Usuario, recordar: boolean = false ) {
+	login( usuario: Usuario, recordar: boolean = false ) {
 
 	if ( recordar ) {
 		localStorage.setItem('email', usuario.email);
@@ -86,20 +84,20 @@ export class UsuarioService {
 		this.guardarStorage( resp.id, resp.token, resp.usuario);
 		return true;
 	});
-  }
+	}
 
 
-  crearUsuario( usuario: Usuario) {
+	crearUsuario( usuario: Usuario) {
 
 	let url = URL_SERVICIO + '/usuario';
 
 	return this.http.post( url, usuario )
 	.map( (resp: any) => {
-	  swal( 'Usuario creado', usuario.email, 'success');
+		swal( 'Usuario creado', usuario.email, 'success');
 		return resp.usuario;
 	});
 
-  }
+	}
 
 	actualizarUsuario( usuario: Usuario) {
 
@@ -122,16 +120,23 @@ export class UsuarioService {
 	cambiarImagen( archivo: File, id: string ) {
 
 		this._subirArchivoService.subirArchivo( archivo, 'usuarios', id )
-			  .then( (resp: any) => {
+				.then( (resp: any) => {
 	
 				this.usuario.img = resp.usuario.img;
 				swal( 'Imagen Actualizada', this.usuario.nombre, 'success' );
 				this.guardarStorage( id, this.token, this.usuario );
 	
-			  })
-			  .catch( resp => {
-				console.log( resp );
-			  }) ;
+				})
+				.catch( resp => {
+				}) ;
 	
-	  }
+	}
+		
+	cargarUsuarios( desde: number = 0 ) {
+
+		let url = URL_SERVICIO + '/usuario?desde=' +desde;
+
+		return this.http.get( url );
+		
+	}
 }

@@ -10,6 +10,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 
 import { LoginGuardGuard } from '../services/guards/login-guard.guard';
 import { ProfileComponent } from './profile/profile.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 
 
@@ -49,6 +50,12 @@ const pageRoutes: Routes = [
           description: 'Página creada por JJ Fernandez con Angular 6',
           custom: 'Texto custom para analitica'
       } },
+      // Mantenimientos
+      { path: 'usuarios', component: UsuariosComponent, data: {
+        titulo: 'Mantenimiento de usuario',
+        description: 'Página creada por JJ Fernandez con Angular 6',
+        custom: 'Texto custom para analitica'
+    } },
       { path: 'profile', component: ProfileComponent, data: {
         titulo: 'Perfil Usuario',
         description: 'Página creada por JJ Fernandez con Angular 6',
