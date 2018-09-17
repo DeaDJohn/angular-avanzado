@@ -9,15 +9,15 @@ import { UsuarioService } from '../../services/usuario/usuario.service';
 })
 export class ProfileComponent implements OnInit {
 
-  usuario: Usuario;
+    usuario: Usuario;
 
 	imagenSubir: File;
 	imagenTemp: string;
 
   constructor(
-	public _usuarioService: UsuarioService
+		public _usuarioService: UsuarioService
   ) {
-	this.usuario = this._usuarioService.usuario;
+		this.usuario = this._usuarioService.usuario;
   }
 
   ngOnInit() {
