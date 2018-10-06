@@ -11,58 +11,64 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { LoginGuardGuard } from '../services/guards/login-guard.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { HospitalesComponent } from './hospitales/hospitales.component';
 
 
 
 const pageRoutes: Routes = [
   {
-    path: '',
-    component: PagesComponent,
-    canActivate: [ LoginGuardGuard ],
-    children: [
-      { path: 'dashboard', component: DashbordComponent, data: {
-          titulo: 'Dashboard',
-          description: 'Página creada por JJ Fernandez con Angular 6',
-          custom: 'Texto custom para analitica'
-      } },
-      { path: 'progress', component: ProgressComponent, data: {
-          titulo: 'Progress',
-          description: 'Página creada por JJ Fernandez con Angular 6',
-          custom: 'Texto custom para analitica'
-      } },
-      { path: 'graficas1', component: Graficas1Component, data: {
-          titulo: 'Gráficas',
-          description: 'Página creada por JJ Fernandez con Angular 6',
-          custom: 'Texto custom para analitica'
-      } },
-      { path: 'promesas', component: PromesasComponent, data: {
-          titulo: 'Promesas',
-          description: 'Página creada por JJ Fernandez con Angular 6',
-          custom: 'Texto custom para analitica'
-      } },
-      { path: 'rxjs', component: RxjsComponent, data: {
-          titulo: 'RxJS',
-          description: 'Página creada por JJ Fernandez con Angular 6',
-          custom: 'Texto custom para analitica'
-      } },
-      { path: 'account-settings', component: AccountSettingsComponent, data: {
-          titulo: 'Ajustes del Tema',
-          description: 'Página creada por JJ Fernandez con Angular 6',
-          custom: 'Texto custom para analitica'
-      } },
-      // Mantenimientos
-      { path: 'usuarios', component: UsuariosComponent, data: {
-        titulo: 'Mantenimiento de usuario',
-        description: 'Página creada por JJ Fernandez con Angular 6',
-        custom: 'Texto custom para analitica'
-    } },
-      { path: 'profile', component: ProfileComponent, data: {
-        titulo: 'Perfil Usuario',
-        description: 'Página creada por JJ Fernandez con Angular 6',
-        custom: 'Texto custom para analitica'
-    } },
-      { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
-    ],
+	path: '',
+	component: PagesComponent,
+	canActivate: [ LoginGuardGuard ],
+	children: [
+		{ path: 'dashboard', component: DashbordComponent, data: {
+			titulo: 'Dashboard',
+			description: 'Página creada por JJ Fernandez con Angular 6',
+			custom: 'Texto custom para analitica'
+		} },
+		{ path: 'progress', component: ProgressComponent, data: {
+			titulo: 'Progress',
+			description: 'Página creada por JJ Fernandez con Angular 6',
+			custom: 'Texto custom para analitica'
+		} },
+		{ path: 'graficas1', component: Graficas1Component, data: {
+			titulo: 'Gráficas',
+			description: 'Página creada por JJ Fernandez con Angular 6',
+			custom: 'Texto custom para analitica'
+		} },
+		{ path: 'promesas', component: PromesasComponent, data: {
+			titulo: 'Promesas',
+			description: 'Página creada por JJ Fernandez con Angular 6',
+			custom: 'Texto custom para analitica'
+		} },
+		{ path: 'rxjs', component: RxjsComponent, data: {
+			titulo: 'RxJS',
+			description: 'Página creada por JJ Fernandez con Angular 6',
+			custom: 'Texto custom para analitica'
+		} },
+		{ path: 'account-settings', component: AccountSettingsComponent, data: {
+			titulo: 'Ajustes del Tema',
+			description: 'Página creada por JJ Fernandez con Angular 6',
+			custom: 'Texto custom para analitica'
+		} },
+		// Mantenimientos
+		{ path: 'usuarios', component: UsuariosComponent, data: {
+			titulo: 'Mantenimiento de usuario',
+			description: 'Página creada por JJ Fernandez con Angular 6',
+			custom: 'Texto custom para analitica'
+		} },
+		{ path: 'hospitales', component: HospitalesComponent, data: {
+			titulo: 'Mantenimiento de hospitales',
+			description: 'Página creada por JJ Fernandez con Angular 6',
+			custom: 'Texto custom para analitica'
+		} },
+		{ path: 'profile', component: ProfileComponent, data: {
+			titulo: 'Perfil Usuario',
+			description: 'Página creada por JJ Fernandez con Angular 6',
+			custom: 'Texto custom para analitica'
+		} },
+		{ path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+	],
   },
 ];
 
