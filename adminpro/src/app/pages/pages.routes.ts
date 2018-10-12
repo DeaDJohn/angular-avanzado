@@ -12,6 +12,8 @@ import { LoginGuardGuard } from '../services/guards/login-guard.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { HospitalesComponent } from './hospitales/hospitales.component';
+import { MedicoComponent } from './medicos/medico.component';
+import { MedicosComponent } from './medicos/medicos.component';
 
 
 
@@ -59,6 +61,16 @@ const pageRoutes: Routes = [
 		} },
 		{ path: 'hospitales', component: HospitalesComponent, data: {
 			titulo: 'Mantenimiento de hospitales',
+			description: 'Página creada por JJ Fernandez con Angular 6',
+			custom: 'Texto custom para analitica'
+		} },
+		{ path: 'medicos', component: MedicosComponent, data: {
+			titulo: 'Mantenimiento de medicos',
+			description: 'Página creada por JJ Fernandez con Angular 6',
+			custom: 'Texto custom para analitica'
+		} },
+		{ path: 'medico/:id', component: MedicoComponent, data: {
+			titulo: 'Actualizar medico',
 			description: 'Página creada por JJ Fernandez con Angular 6',
 			custom: 'Texto custom para analitica'
 		} },
