@@ -3,6 +3,8 @@ import { Hospital } from '../../models/hospital.model';
 import { HospitalService } from '../../services/service.index';
 import { ModalUploadService } from '../../components/modal-upload/modal-upload.service';
 
+declare var swal: any;
+
 @Component({
   selector: 'app-hospitales',
   templateUrl: './hospitales.component.html',
@@ -31,9 +33,8 @@ export class HospitalesComponent implements OnInit {
         this.cargando = true;
 
         this._hospitalService.cargarHospitales( this.desde )
-            .subscribe( (resp: any) => {
-                this.totalRegistros = resp.total;
-                this.hospitales = resp.hospitales;
+            .subscribe( (hospitales) => {
+                this.hospitales = hospitales;
                 this.cargando = false;
             })
     }
@@ -93,6 +94,29 @@ export class HospitalesComponent implements OnInit {
 
         this._hospitalService.actualizarHospital( hospital )
             .subscribe();
+    }
+
+    crearHospital(){
+        swal({
+            title: 'Crear Hospital',
+            text: 'Ingrese el nombre del hospital',
+            content: 'input',
+            icon: 'info',
+            buttons: true,
+            dangerMode: true,
+        }).then( (valor: string) =>{
+            if( !valor || valor.length === 0){
+                return;
+            }
+
+            this._hospitalService.crearHospital( valor)
+                .subscribe( () => this.cargarHospitales() );
+        })
+    }
+
+    actualizarImagen( hospital: Hospital){
+
+        this._modalUploadService.mostarModal( 'hospitales', hospital._id);
     }
 
 }
