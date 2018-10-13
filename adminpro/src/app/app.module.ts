@@ -21,11 +21,11 @@ import { ChartsModule } from 'ng2-charts';
 
 // Servicios
 import { ServiceModule } from './services/service.module';
-import { MedicoComponent } from './pages/medicos/medico.component';
+
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, MedicoComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent],
   imports: [
     BrowserModule,
     APP_ROUTES,

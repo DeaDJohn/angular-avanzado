@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Medico } from '../../models/medico.model';
 import { MedicoService } from '../../services/service.index';
-import { relative } from 'path';
+
 
 @Component({
   selector: 'app-medicos',
@@ -35,6 +35,11 @@ export class MedicosComponent implements OnInit {
 
     crearMedico() {
 
+    }
+
+    borrarMedico( medico: Medico){
+        this._medicoService.borrarMedico( medico._id)
+            .subscribe(() => this.cargarMedicos());
     }
 
 }
