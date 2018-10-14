@@ -15,7 +15,7 @@ export class MedicoService {
         public http: HttpClient
     ) { }
 
-  cargarMedico() {
+  cargarMedicos() {
       let url = URL_SERVICIO + '/medico';
 
       return this.http.get( url )
@@ -24,6 +24,12 @@ export class MedicoService {
               return resp.medicos;
           });
   }
+    cargarMedico( id: string) {
+        let url = URL_SERVICIO + '/medico/' + id;
+        return this.http.get( url )
+            .map( (resp: any) => resp.medico);
+
+    }
     buscarMedicos( termino: string) {
         let url = URL_SERVICIO + '/busqueda/coleccion/medicos/' +termino;
         return this.http.get( url )
