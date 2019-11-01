@@ -4,6 +4,7 @@ import { Hospital } from '../../models/hospital.model';
 import { MedicoService, HospitalService } from '../../services/service.index';
 import { Medico } from '../../models/medico.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ModalUploadService } from '../../components/modal-upload/modal-upload.service';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class MedicoComponent implements OnInit {
         public _medicoService: MedicoService,
         public _hospitalService: HospitalService,
         public router: Router,
-        public activatedRoute: ActivatedRoute
+        public activatedRoute: ActivatedRoute,
+        public _modalUoloadService: ModalUploadService
     ) {
         activatedRoute.params.subscribe( params => {
             let id = params['id'];
@@ -37,7 +39,11 @@ export class MedicoComponent implements OnInit {
         this._hospitalService.cargarHospitales()
             .subscribe( hospitales => this.hospitales = hospitales );
 
-            console.log(this.hospitales);
+            // console.log(this.hospitales);
+        this._modalUoloadService.notificacion
+            .subscribe( resp =>{
+                this.medico.img = resp.medico.img;
+            });
     }
 
     cargarMedico( id: string) {
@@ -74,6 +80,10 @@ export class MedicoComponent implements OnInit {
                 this.hospital = hospital
                 console.log(this.hospital);
             });
+    }
+
+    cambiarFoto(){
+        this._modalUoloadService.mostarModal( 'medicos', this.medico._id);
     }
 
 }

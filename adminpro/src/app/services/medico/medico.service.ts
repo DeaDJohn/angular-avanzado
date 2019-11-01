@@ -49,12 +49,29 @@ export class MedicoService {
     guardarMedico( medico: Medico ){
         
         let url = URL_SERVICIO + '/medico';
-        url += '?token=' + this._usuarioService.token;
 
-        return this.http.post( url, medico)
-            .map( ( resp: any ) =>{
-                swal('Mécdico creado', medico.nombre, 'success');
-                return resp.medico;
-            })
+        if( medico._id){
+            // Actualizando
+            url += '/' + medico._id;
+            url += '?token=' + this._usuarioService.token;
+
+            return this.http.put( url, medico)
+                .map( (resp: any )=> {
+                    swal('Médico actualizado', medico.nombre, 'success');
+                    return resp.medico;
+                })
+        }else{
+            // Creando
+            url += '?token=' + this._usuarioService.token;
+    
+            return this.http.post( url, medico)
+                .map( ( resp: any ) =>{
+                    swal('Médico creado', medico.nombre, 'success');
+                    return resp.medico;
+                })
+        }
+
+
+
     }
 }

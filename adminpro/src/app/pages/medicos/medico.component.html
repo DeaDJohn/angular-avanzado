@@ -2,7 +2,7 @@
 
     <div class="col-md-6">
         <div class="card card-body">
-            <h3 class="box-title m-b-0">Médico: {{ medico.nombre }}</h3>
+            <h3 class="box-title mb-2">Médico: {{ medico.nombre }}</h3>
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
                     <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarMedico(f)">
@@ -39,7 +39,7 @@
         <div class="card card-body">
             <h4 class="box-title m-b-0">Hospital</h4>
 
-            <img [src]="hospital.img | imagen:'hospital'" [alt]="hospital.nombre" class="rounded img-fluid">
+            <img [src]="hospital.img | imagen:'hospital'" [alt]="hospital.nombre" class="img-120 mt-3 rounded img-fluid">
         </div>
     </div>
 
@@ -47,7 +47,7 @@
         <div class="card card-body">
             <h4 class="box-title m-b-0">Fotografía</h4>
 
-            <img [src]="medico.img | imagen:'medico'" class="img-circle img-fluid pointer">
+            <img (click)="cambiarFoto()" [src]="medico.img | imagen:'medico'" class="img-120 mt-3 img-circle img-fluid pointer">
         </div>
     </div>
 
