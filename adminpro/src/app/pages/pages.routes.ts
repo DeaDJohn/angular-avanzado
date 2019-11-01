@@ -14,6 +14,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { HospitalesComponent } from './hospitales/hospitales.component';
 import { MedicoComponent } from './medicos/medico.component';
 import { MedicosComponent } from './medicos/medicos.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 
 
@@ -50,6 +51,11 @@ const pageRoutes: Routes = [
 		} },
 		{ path: 'account-settings', component: AccountSettingsComponent, data: {
 			titulo: 'Ajustes del Tema',
+			description: 'Página creada por JJ Fernandez con Angular 6',
+			custom: 'Texto custom para analitica'
+		} },
+		{ path: 'busqueda/:termino', component:BusquedaComponent, data: {
+			titulo: 'Buscador',
 			description: 'Página creada por JJ Fernandez con Angular 6',
 			custom: 'Texto custom para analitica'
 		} },
