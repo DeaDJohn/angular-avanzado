@@ -151,7 +151,7 @@ app.post('/', mdAutentificacion.verificaToken, (req, res) => {
         if (err) {
             return res.status(400).json({
                 ok: false,
-                mensaje: 'Error guarado medico',
+                mensaje: 'Error guardado medico',
                 errors: err
             });
         }

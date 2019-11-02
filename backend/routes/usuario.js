@@ -50,7 +50,7 @@ app.get('/', (req, res, next) => {
 // Actualizar un  usuario
 //
 
-app.put('/:id', mdAutentificacion.verificaToken, (req, res) => {
+app.put('/:id', [mdAutentificacion.verificaToken, mdAutentificacion.verificaAdmin_o_MismoUsuario], (req, res) => {
 
     var id = req.params.id;
     var body = req.body;
@@ -120,7 +120,7 @@ app.post('/', (req, res) => {
         if (err) {
             return res.status(400).json({
                 ok: false,
-                mensaje: 'Error guarado usuario',
+                mensaje: 'Error guardado usuario',
                 errors: err
             });
         }
@@ -142,7 +142,7 @@ app.post('/', (req, res) => {
 // Eliminar un usuario por el id
 //
 
-app.delete('/:id', mdAutentificacion.verificaToken, (req, res) => {
+app.delete('/:id', [mdAutentificacion.verificaToken, mdAutentificacion.verificaAdmin], (req, res) => {
 
     var id = req.params.id;
 

@@ -15,6 +15,7 @@ import { HospitalesComponent } from './hospitales/hospitales.component';
 import { MedicoComponent } from './medicos/medico.component';
 import { MedicosComponent } from './medicos/medicos.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
+import { AdminGuard } from '../services/service.index';
 
 
 
@@ -60,10 +61,14 @@ const pageRoutes: Routes = [
 			custom: 'Texto custom para analitica'
 		} },
 		// Mantenimientos
-		{ path: 'usuarios', component: UsuariosComponent, data: {
-			titulo: 'Mantenimiento de usuario',
-			description: 'Página creada por JJ Fernandez con Angular 6',
-			custom: 'Texto custom para analitica'
+		{ 
+			path: 'usuarios', 
+			component: UsuariosComponent,
+			canActivate: [AdminGuard],
+			data: {
+				titulo: 'Mantenimiento de usuario',
+				description: 'Página creada por JJ Fernandez con Angular 6',
+				custom: 'Texto custom para analitica'
 		} },
 		{ path: 'hospitales', component: HospitalesComponent, data: {
 			titulo: 'Mantenimiento de hospitales',
