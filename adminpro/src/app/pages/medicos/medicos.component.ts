@@ -11,6 +11,8 @@ import { MedicoService } from '../../services/service.index';
 export class MedicosComponent implements OnInit {
 
   medicos: Medico[] = [];
+  desde : number = 0;
+  totalRegistros : number = 0;
 
   constructor(
     public _medicoService: MedicoService
@@ -35,6 +37,20 @@ export class MedicosComponent implements OnInit {
 
     crearMedico() {
 
+	}
+	cambiarDesde(valor : number) {
+
+        let desde = this.desde + valor;
+
+        if (desde >= this.totalRegistros) {
+            return;
+        }
+        if (desde < 0) {
+            return;
+        }
+
+        this.desde += valor;
+        this.cargarMedicos();
     }
 
     borrarMedico( medico: Medico){

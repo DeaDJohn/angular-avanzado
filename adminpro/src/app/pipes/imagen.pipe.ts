@@ -11,7 +11,7 @@ export class ImagenPipe implements PipeTransform {
     let url = URL_SERVICIO + '/img';
 
     if ( !img ) {
-      return url + '/usuarios/xxx';
+      return url + '/no-image.jpg';
     }
 
     if ( img.indexOf('https') >= 0 ) {
@@ -34,7 +34,7 @@ export class ImagenPipe implements PipeTransform {
 
       default:
         console.log('tipo de imagen no existe, usuario, medicos, hospitales');
-        url += '/usurios/xxx';
+        url += '/no-image';
     }
 
     return url;

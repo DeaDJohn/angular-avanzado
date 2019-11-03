@@ -15,13 +15,14 @@ import {HospitalesComponent} from './hospitales/hospitales.component';
 import {MedicoComponent} from './medicos/medico.component';
 import {MedicosComponent} from './medicos/medicos.component';
 import {BusquedaComponent} from './busqueda/busqueda.component';
-import {AdminGuard} from '../services/service.index';
+import {AdminGuard, VerificaTokenGuard} from '../services/service.index';
 
 const pageRoutes : Routes = [
 
     {
         path: 'dashboard',
-        component: DashbordComponent,
+		component: DashbordComponent,
+		canActivate: [VerificaTokenGuard],
         data: {
             titulo: 'Dashboard',
             description: 'Página creada por JJ Fernandez con Angular 6',
