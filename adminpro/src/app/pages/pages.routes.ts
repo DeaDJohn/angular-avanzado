@@ -16,6 +16,7 @@ import {MedicoComponent} from './medicos/medico.component';
 import {MedicosComponent} from './medicos/medicos.component';
 import {BusquedaComponent} from './busqueda/busqueda.component';
 import {AdminGuard, VerificaTokenGuard} from '../services/service.index';
+import { HospitalComponent } from './hospitales/hospital.component';
 
 const pageRoutes : Routes = [
 
@@ -92,6 +93,14 @@ const pageRoutes : Routes = [
         component: HospitalesComponent,
         data: {
             titulo: 'Mantenimiento de hospitales',
+            description: 'Página creada por JJ Fernandez con Angular 6',
+            custom: 'Texto custom para analitica'
+        }
+    }, {
+        path: 'hospital/:id',
+        component: HospitalComponent,
+        data: {
+            titulo: 'Actualizar medico',
             description: 'Página creada por JJ Fernandez con Angular 6',
             custom: 'Texto custom para analitica'
         }

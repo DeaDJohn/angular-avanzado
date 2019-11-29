@@ -48,14 +48,19 @@
                                 <td class="w70">
                                     <img (click)="actualizarImagen( hospital )" [src]="hospital.img | imagen:'hospital'" [alt]="hospital.nombre" class="img-50 pointer">
                                 </td>
-                                <td>
+                                <!-- <td>
                                     <input [(ngModel)]="hospital.nombre" name="nombre" type="text" placeholder="Nombre del hospital" class="form-control">
-                                </td>
-
+                                </td> -->
+								<td>
+										{{ hospital.nombre }}
+								</td>
                                 <td>
-                                    <button (click)="guardarHospital( hospital )" class="btn btn-primary">
+									<button [routerLink]="['/hospital', hospital._id]" class="btn btn-primary">
+										<i class="fa fa-edit"></i>
+									</button>
+                                    <!-- <button (click)="guardarHospital( hospital )" class="btn btn-primary">
                                         <i class="fa fa-save"></i>
-                                    </button>
+                                    </button> -->
                                     <button (click)="borrarHospital( hospital )" class="btn btn-danger">
                                         <i class="fa fa-trash-o"></i>
                                     </button>
